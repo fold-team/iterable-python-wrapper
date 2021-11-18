@@ -872,7 +872,7 @@ class IterableApi():
 	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 	def send_push_notification(self, campaign_id, recipient_email, 
-							   message_medium, data_fields=None,
+							   data_fields=None,
 							   send_at=None, 
 							   allow_repeat_marketing_sends=None,
 							   metadata=None):
@@ -884,11 +884,6 @@ class IterableApi():
 		payload["campaignId"]= campaign_id
 
 		payload["recipientEmail"]= recipient_email
-
-		if isinstance(message_medium, dict):
-			payload["messageMedium"]= message_medium
-		else:
-			raise Exception('message medium is not in Dictionary format')
 
 		if data_fields is not None:
 			payload["dataFields"]= data_fields
