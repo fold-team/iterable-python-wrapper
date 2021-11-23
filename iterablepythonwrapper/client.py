@@ -190,6 +190,30 @@ class IterableApi():
 
 		return self.api_call(call=call, method="GET")
 
+	def trigger_campaign(self, campaign_id, list_ids, data_fields=None):
+		call = "/api/campaigns/trigger"
+		
+		payload ={}
+		
+		if len(campaign_id) == 1:
+			payload["campaignId"] = campaign_id
+		else:
+			raise TypeError("campaign id required")
+
+		if isinstance(list_ids, list):
+			if len(list_ids)>=1:
+				payload["listIds"]= list_ids
+			else:
+				raise ValueError('You need to pass in at least 1 list id')
+		else:
+			raise TypeError('list ids are not stored in list format')
+
+		if data_fields is not None:
+			payload["dataFields"]= data_fields
+		
+		return self.api_call(call=call, method="POST", params=payload)
+
+
 	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 	Iterable Channel Requests
