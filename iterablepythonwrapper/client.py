@@ -195,11 +195,10 @@ class IterableApi():
 		
 		payload ={}
 		
-		if len(campaign_id) == 1:
-			payload["campaignId"] = campaign_id
-		else:
+		if  campaign_id is None:
 			raise TypeError("campaign id required")
-
+		else:
+			payload["campaignId"] = campaign_id
 		if isinstance(list_ids, list):
 			if len(list_ids)>=1:
 				payload["listIds"]= list_ids
