@@ -396,7 +396,7 @@ class IterableApi():
 			payload["id"]= str(event_id)
 
 		if email is not None:
-			payload["email"]=email
+			payload["email"]=str(email)
 
 		if created_at is not None:
 			payload["createdAt"]=created_at
