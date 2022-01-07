@@ -894,7 +894,7 @@ class IterableApi():
 
 	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-	def send_push_notification(self, campaign_id, recipient_email, 
+	def send_push_notification(self, campaign_id, recipient_email=None, recipient_userId=None,
 							   data_fields=None,
 							   send_at=None, 
 							   allow_repeat_marketing_sends=None,
@@ -906,7 +906,11 @@ class IterableApi():
 
 		payload["campaignId"]= campaign_id
 
-		payload["recipientEmail"]= recipient_email
+		if recipient_email is not None:
+			payload["recipientEmail"] = recipient_email
+
+		if recipient_userId is not None:
+			payload["recipientUserId"] = recipient_userId
 
 		if data_fields is not None:
 			payload["dataFields"]= data_fields
